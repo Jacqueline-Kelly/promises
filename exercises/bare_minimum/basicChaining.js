@@ -11,10 +11,21 @@
 var fs = require('fs');
 var Promise = require('bluebird');
 
+// var fs = Promise.promisifyAll(require("fs"));
+// fs.readFileAsync("name", "utf8").then(function(data) {
+
+// });
 
 
 var fetchProfileAndWriteToFile = function(readFilePath, writeFilePath) {
   // TODO
+  Promise.promisifyAll(fs);
+
+  fs.readFile(readFilePath, 'utf8').then((data) => {
+    data = data;
+    fs.writeFile(writeFilePath, data);
+  });
+  console.log(data);
 };
 
 // Export these functions so we can test them
